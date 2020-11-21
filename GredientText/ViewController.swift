@@ -10,15 +10,21 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var gredientView: GredientLabel!
+    @IBOutlet weak var gredientView1: GredientLabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         gredientView.text = "Sometimes feeling of love is better than falling in love."
+        gredientView1.color1 = UIColor.systemOrange
+        gredientView1.color2 = UIColor.systemGreen
+        gredientView1.text = "Believe on you"
     }
 }
 
 public class GredientLabel: UILabel {
     let textLayer = CATextLayer()
     let gredientLayer = CAGradientLayer()
+    public var color1 = UIColor.systemRed
+    public var color2 = UIColor.systemPurple
     public override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -34,19 +40,18 @@ public class GredientLabel: UILabel {
     public override func layoutSubviews() {
         super.layoutSubviews()
         self.layoutIfNeeded()
+        let gradientColors = [color1.cgColor, color2.cgColor]
+        gredientLayer.colors = gradientColors
         gredientLayer.frame = CGRect.init(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
         textLayer.frame = gredientLayer.bounds
     }
     private func commonInit() {
-        //self.backgroundColor = UIColor.lightGray.withAlphaComponent(0.1)
         self.layoutIfNeeded()
         let textfont = UIFont.boldSystemFont(ofSize: 40.0)
         self.font = textfont
         self.textColor = .clear
-        let baseColor = UIColor.red
-        let middleStop = UIColor.yellow
         
-        let gradientColors = [baseColor.cgColor, middleStop.cgColor]
+        let gradientColors = [color1.cgColor, color2.cgColor]
         let locations: [NSNumber] = [0.0, 1.0]
         
         gredientLayer.frame = CGRect.init(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
