@@ -38,7 +38,7 @@ public class GredientLabel: UILabel {
         textLayer.frame = gredientLayer.bounds
     }
     private func commonInit() {
-        self.backgroundColor = UIColor.lightGray.withAlphaComponent(0.1)
+        //self.backgroundColor = UIColor.lightGray.withAlphaComponent(0.1)
         self.layoutIfNeeded()
         let textfont = UIFont.boldSystemFont(ofSize: 40.0)
         self.font = textfont
@@ -54,7 +54,6 @@ public class GredientLabel: UILabel {
         gredientLayer.locations = locations
         gredientLayer.startPoint = CGPoint.init(x: 0, y: 0)
         gredientLayer.endPoint = CGPoint.init(x: 1, y: 1)
-        
         textLayer.isWrapped = true
         textLayer.foregroundColor = UIColor.black.cgColor
         textLayer.backgroundColor = UIColor.clear.cgColor
